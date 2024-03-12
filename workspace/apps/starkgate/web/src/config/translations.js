@@ -2,16 +2,16 @@ export const translations = {
   head: {
     title: {
       bridge: {
-        goerli: 'Testnet Goerli StarkGate: Bridge Assets from Ethereum to Starknet',
-        main: 'StarkGate: Bridge Assets from Ethereum to Starknet'
+        goerli: 'zkLend: Bridge ZEND from Ethereum to Starknet',
+        main: 'zkLend: Bridge ZEND from Ethereum to Starknet'
       },
       faq: {
-        goerli: "Testnet Goerli StarkGate FAQ: Learn More About Starknet's Bridge to Ethereum",
-        main: "StarkGate FAQ: Learn More About Starknet's Bridge to Ethereum"
+        goerli: "zkLend FAQ: Learn More About Starknet's Bridge to Ethereum",
+        main: "zkLend FAQ: Learn More About Starknet's Bridge to Ethereum"
       },
       terms: {
-        goerli: 'Testnet Goerli StarkGate Terms of Service',
-        main: 'StarkGate Terms of Service'
+        goerli: 'zkLend Terms of Service',
+        main: 'zkLend Terms of Service'
       }
     }
   },
@@ -28,13 +28,13 @@ export const translations = {
       }
     },
     footer: {
-      rightsTxt: '© {{fullYear}} StarkWare Industries Ltd. All Rights Reserved'
+      rightsTxt: ''
     }
   },
   screens: {
     faq: {
       titleTxt: 'Frequently asked questions',
-      subtitleTxt: 'Everything you need to know about StarkGate.'
+      subtitleTxt: 'Everything you need to know about bridging.'
     },
     terms: {
       titleTxt: 'Terms of Service',

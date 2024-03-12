@@ -49,7 +49,6 @@ export const App = () => {
               <Route element={<Navigate replace to="/" />} path="*" />
             </Routes>
           </StyledBackground>
-          <SideButton icon={<DiscordIcon />} onClick={onDiscordClick} />
         </>
       )}
     </div>

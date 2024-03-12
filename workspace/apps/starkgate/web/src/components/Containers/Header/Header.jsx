@@ -1,6 +1,6 @@
 import {useLocation} from 'react-router-dom';
 
-import StarkGateLogoPath from '@assets/img/starkgate.png';
+import ZkLendLogoPath from '@assets/img/zklend.png';
 import {ReactComponent as LinkIcon} from '@assets/svg/icons/link.svg';
 import {STARKNET_ECOSYSTEM_URL} from '@config/constants';
 import {WalletButtons} from '@features';
@@ -53,7 +53,7 @@ export const Header = () => {
     <div className={toClasses(styles.header, 'row')}>
       <div className={toClasses(styles.left, 'row')}>
         <div className={toClasses(styles.logo, 'row')} onClick={onLogoClick}>
-          <Image height={40} src={StarkGateLogoPath} />
+          <Image height={40} src={ZkLendLogoPath} />
         </div>
         <ChainSelect />
       </div>
