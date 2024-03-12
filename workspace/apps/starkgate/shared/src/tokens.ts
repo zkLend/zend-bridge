@@ -2,6 +2,17 @@ import {ChainType} from '@starkware-webapps/enums';
 
 export const Tokens = {
   L1: {
+    ZEND: {
+      name: 'zkLend',
+      symbol: 'ZEND',
+      decimals: 18,
+      bridgeAddress: {
+        [ChainType.L1.MAIN]: '0xF5b6Ee2CAEb6769659f6C091D209DfdCaF3F69Eb'
+      },
+      tokenAddress: {
+        [ChainType.L1.MAIN]: '0xb2606492712D311be8f41d940AFE8CE742A52D44'
+      }
+    },
     ETH: {
       name: 'Ether',
       symbol: 'ETH',
@@ -187,6 +198,20 @@ export const Tokens = {
     }
   },
   L2: {
+    ZEND: {
+      name: 'zkLend',
+      symbol: 'ZEND',
+      decimals: 18,
+      autoWithdrawal: {
+        [ChainType.L2.MAIN]: true
+      },
+      bridgeAddress: {
+        [ChainType.L2.MAIN]: '0x0616757a151c21f9be8775098d591c2807316d992bbc3bb1a5c1821630589256'
+      },
+      tokenAddress: {
+        [ChainType.L2.MAIN]: '0x00585c32b625999e6e5e78645ff8df7a9001cf5cf3eb6b80ccdd16cb64bd3a34'
+      }
+    },
     ETH: {
       name: 'Ether',
       symbol: 'ETH',
