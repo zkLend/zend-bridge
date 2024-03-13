@@ -3,7 +3,7 @@ import ZkLendLogoPath from '@assets/img/zklend.png';
 import {WalletButtons} from '@features';
 import {useApp, useIsL1, useMenu, useSource, useWalletLogin} from '@providers';
 import {toClasses} from '@starkware-webapps/utils-browser';
-import {ChainSelect, Divider, Image, LoginWalletButton} from '@ui';
+import {Divider, Image, LoginWalletButton} from '@ui';
 
 import styles from './Header.module.scss';
 
@@ -27,7 +27,7 @@ export const Header = () => {
         <div className={toClasses(styles.logo, 'row')} onClick={onLogoClick}>
           <Image height={40} src={ZkLendLogoPath} />
         </div>
-        <ChainSelect />
+        {/* <ChainSelect /> */}
       </div>
       <div className={toClasses(styles.right, 'row')}>
         <>
