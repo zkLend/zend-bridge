@@ -146,6 +146,11 @@ export const WalletProvider = ({children}) => {
         {
           name: StarknetConnect.Provider.BLAST,
           apiKey: RPC_PROVIDER_BLAST_API_KEY
+        },
+        {
+          name: StarknetConnect.Provider.CHAINSTACK,
+          nodeId: RPC_PROVIDER_CHAINSTACK_NODE_ID,
+          apiKey: RPC_PROVIDER_CHAINSTACK_API_KEY
         }
       ]
     });
