@@ -203,7 +203,7 @@ export const Tokens = {
       symbol: 'ZEND',
       decimals: 18,
       autoWithdrawal: {
-        [ChainType.L2.MAIN]: true
+        [ChainType.L2.MAIN]: false
       },
       bridgeAddress: {
         [ChainType.L2.MAIN]: '0x0616757a151c21f9be8775098d591c2807316d992bbc3bb1a5c1821630589256'
