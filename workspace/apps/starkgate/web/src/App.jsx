@@ -1,20 +1,16 @@
 import {useEffect} from 'react';
 import {Navigate, Route, Routes} from 'react-router-dom';
 
-import {ReactComponent as DiscordIcon} from '@assets/svg/icons/discord.svg';
 import {Footer, Header} from '@containers';
 import {useGoogleFonts} from '@flyyer/use-googlefonts';
-import {useConstants, useDiscordTabTracking} from '@hooks';
 import {useApp, useUnsupportedModal} from '@providers';
-import {Bridge, Faq, Terms} from '@routes';
-import {isMobile, openInNewTab} from '@starkware-webapps/utils-browser';
-import {SideButton, StyledBackground} from '@ui';
+import {Bridge} from '@routes';
+import {isMobile} from '@starkware-webapps/utils-browser';
+import {StyledBackground} from '@ui';
 
 import styles from './App.module.scss';
 
 export const App = () => {
-  const [trackDiscordClick] = useDiscordTabTracking();
-  const {DISCORD_LINK_URL} = useConstants();
   const {isScrollActive} = useApp();
   const showUnsupportedModal = useUnsupportedModal();
   useGoogleFonts([
@@ -30,11 +26,6 @@ export const App = () => {
     }
   }, []);
 
-  const onDiscordClick = () => {
-    trackDiscordClick();
-    openInNewTab(DISCORD_LINK_URL);
-  };
-
   return (
     <div className={styles.app}>
       {!isMobile && (
@@ -44,8 +35,6 @@ export const App = () => {
           <StyledBackground withLightAccent={!isScrollActive}>
             <Routes>
               <Route element={<Bridge />} path="/" />
-              <Route element={<Terms />} path="/terms" />
-              <Route element={<Faq />} path="/faq" />
               <Route element={<Navigate replace to="/" />} path="*" />
             </Routes>
           </StyledBackground>
