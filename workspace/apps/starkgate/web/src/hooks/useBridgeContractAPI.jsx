@@ -124,19 +124,24 @@ export const useBridgeContractAPI = () => {
   );
 
   const maxTotalBalance = useCallback(
-    async token => {
-      const {bridgeAddress, decimals, symbol} = token || selectedToken;
-      const contract = await getL1BridgeContract(bridgeAddress);
+    async () => {
+      // Multibridge at
+      // https://etherscan.io/address/0xF5b6Ee2CAEb6769659f6C091D209DfdCaF3F69Eb#readProxyContract
+      // doesn't have maxTotalBalance anymore, but strangely enough,
+      // it still tries to get maxTotalBalance. So just ignore this.
 
-      const [maxTotalBalance, error] = await promiseHandler(
-        isDai(symbol) ? contract.ceiling() : contract.maxTotalBalance()
-      );
-      if (error) {
-        return Promise.reject(error);
-      }
-      return parseFromDecimals(maxTotalBalance, decimals);
+      // const {bridgeAddress, decimals, symbol} = token || selectedToken;
+      // const contract = await getL1BridgeContract(bridgeAddress);
+
+      // const [maxTotalBalance, error] = await promiseHandler(
+      //   isDai(symbol) ? contract.ceiling() : contract.maxTotalBalance()
+      // );
+      // if (error) {
+      //   return Promise.reject(error);
+      // }
+      return '115792089237316195423570985008687907853269984665640564039457.584007913129639935';
     },
-    [selectedToken, getL1BridgeContract]
+    []
   );
 
   const initiateWithdraw = useCallback(
