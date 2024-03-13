@@ -4,9 +4,9 @@ export const categories = {
   chains: {
     label: 'Chains'
   },
-  fiat: {label: 'Fiat on-ramp'},
+  fiat: {label: ''},
   exchanges: {
-    label: 'Exchanges'
+    label: ''
   }
 };
 
@@ -158,35 +158,35 @@ export const providers = [
 
 export const depositConfig = {
   chains: {
-    [NetworkType.L1]: [],
-    polygon: ['orbiter', 'layerswap', 'rhinofi'],
-    arbitrum: ['orbiter', 'layerswap', 'rhinofi'],
-    optimism: ['orbiter', 'layerswap', 'rhinofi'],
-    other_chains: ['orbiter', 'layerswap', 'rhinofi']
+    [NetworkType.L1]: []
+    // polygon: ['orbiter', 'layerswap', 'rhinofi'],
+    // arbitrum: ['orbiter', 'layerswap', 'rhinofi'],
+    // optimism: ['orbiter', 'layerswap', 'rhinofi'],
+    // other_chains: ['orbiter', 'layerswap', 'rhinofi']
   },
   fiat: {
-    card: ['banxa', 'ramp']
+    // card: []
   },
   exchanges: {
-    coinbase: ['layerswap'],
-    okx: ['layerswap'],
-    huobi: ['layerswap'],
-    other_exchanges: ['layerswap']
+    // coinbase: ['layerswap'],
+    // okx: ['layerswap'],
+    // huobi: ['layerswap'],
+    // other_exchanges: ['layerswap']
   }
 };
 
 export const withdrawConfig = {
   chains: {
     [NetworkType.L1]: [],
-    polygon: ['orbiter', 'layerswap', 'rhinofi'],
-    arbitrum: ['orbiter', 'layerswap', 'rhinofi'],
-    optimism: ['orbiter', 'layerswap', 'rhinofi'],
-    other_chains: ['orbiter', 'layerswap', 'rhinofi']
+    // polygon: ['orbiter', 'layerswap', 'rhinofi'],
+    // arbitrum: ['orbiter', 'layerswap', 'rhinofi'],
+    // optimism: ['orbiter', 'layerswap', 'rhinofi'],
+    // other_chains: ['orbiter', 'layerswap', 'rhinofi']
   },
   exchanges: {
-    coinbase: ['layerswap'],
-    okx: ['layerswap'],
-    huobi: ['layerswap'],
-    other_exchanges: ['layerswap']
+    // coinbase: ['layerswap'],
+    // okx: ['layerswap'],
+    // huobi: ['layerswap'],
+    // other_exchanges: ['layerswap']
   }
 };
