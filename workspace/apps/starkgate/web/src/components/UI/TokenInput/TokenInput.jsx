@@ -31,7 +31,8 @@ export const TokenInput = ({
         placeholder={inputPlaceholderTxt}
         style={{
           fontSize: '24px',
-          fontWeight: '600'
+          fontWeight: '600',
+          width: '70%'
         }}
         type="number"
         value={value}
