@@ -101,6 +101,25 @@
     "outputs": []
   },
   {
+    "name": "initiate_token_withdraw",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "l1_token",
+        "type": "felt"
+      },
+      {
+        "name": "l1_recipient",
+        "type": "felt"
+      },
+      {
+        "name": "amount",
+        "type": "Uint256"
+      }
+    ],
+    "outputs": []
+  },
+  {
     "name": "handle_deposit",
     "type": "l1_handler",
     "inputs": [
