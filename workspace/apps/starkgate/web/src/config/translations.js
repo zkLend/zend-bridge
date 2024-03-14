@@ -70,7 +70,7 @@ export const translations = {
     },
     source: {
       depositTxt: 'Deposit',
-      withdrawTxt: 'Withdraw',
+      withdrawTxt: 'Withdraw\n(Coming soon)',
       toTxt: 'to',
       fromTxt: 'from'
     },
