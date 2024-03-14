@@ -1,5 +1,5 @@
 
-import ZkLendLogoPath from '@assets/img/zklend.png';
+import ZkLendLogoPath from '@assets/img/zklend.svg';
 import {WalletButtons} from '@features';
 import {useApp, useIsL1, useMenu, useSource, useWalletLogin} from '@providers';
 import {toClasses} from '@starkware-webapps/utils-browser';
