@@ -2,8 +2,8 @@ export const translations = {
   head: {
     title: {
       bridge: {
-        goerli: 'zkLend: Bridge ZEND from Ethereum to Starknet',
-        main: 'zkLend: Bridge ZEND from Ethereum to Starknet'
+        goerli: 'zkLend: Bridge ZEND between Ethereum and Starknet',
+        main: 'zkLend: Bridge ZEND between Ethereum and Starknet'
       },
       faq: {
         goerli: "zkLend FAQ: Learn More About Starknet's Bridge to Ethereum",
