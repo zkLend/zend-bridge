@@ -89,12 +89,15 @@ export const useBridgeContractAPI = () => {
 
   const withdraw = useCallback(
     async ({recipient, amount, symbol}) => {
-      const {bridgeAddress, decimals} = symbol ? getL1Token(symbol) : selectedToken;
+      const {bridgeAddress, decimals, tokenAddress} = symbol ? getL1Token(symbol) : selectedToken;
       const contract = await getL1BridgeContract(bridgeAddress);
       return await sendEthereumTransaction({
         contract,
-        method: 'withdraw(uint256,address)',
-        args: [parseToDecimals(amount, decimals), recipient],
+        // address token,
+        // uint256 amount,
+        // address recipient
+        method: 'withdraw(address,uint256,address)',
+        args: [tokenAddress, parseToDecimals(amount, decimals), recipient],
         transaction: {
           from: ethereumAccount
         }
