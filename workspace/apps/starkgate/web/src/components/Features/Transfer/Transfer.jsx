@@ -190,7 +190,7 @@ export const Transfer = ({onNetworkSwap}) => {
       {selectedToken && (
         <>
           <MenuBackground>{isL1 ? renderL1Network() : renderL2Network()}</MenuBackground>
-          {/* <NetworkSwap isFlipped={isL2} onClick={onNetworkSwap} /> */}
+          <NetworkSwap isFlipped={isL2} onClick={onNetworkSwap} />
           <MenuBackground>{isL1 ? renderL2Network() : renderL1Network()}</MenuBackground>
           {ENABLE_AUTO_WITHDRAWAL && selectedToken.autoWithdrawal && (
             <AutoWithdrawal checked={autoWithdrawal} disabled={isButtonDisabled} />
