@@ -1,4 +1,4 @@
-# starkgate-frontend
+# zend-bridge
 
 This is a fork of Starkgate to enable the transfer of ZEND. Originally, the code written for Stargate only supports the [legacy bridge](https://github.com/starknet-io/starkgate-contracts/blob/v2.0/src/solidity/LegacyBridge.sol). This fork modifies a little bit of code to support [StarkTokenBridge](https://github.com/starknet-io/starkgate-contracts/blob/v2.0/src/solidity/StarknetTokenBridge.sol), which is a generic bridge that can support multiple tokens in contrast to the legacy bridge that can only support a token per bridge.
 
