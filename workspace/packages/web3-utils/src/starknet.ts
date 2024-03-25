@@ -1,4 +1,13 @@
-import {Account, CallData, RawArgs, constants, validateAndParseAddress} from 'starknet';
+import {
+  Account,
+  CallData,
+  RawArgs,
+  RpcProvider,
+  constants,
+  hash,
+  num,
+  validateAndParseAddress
+} from 'starknet';
 import {isHexStrict} from 'web3-validator';
 
 import {promiseHandler} from '@starkware-webapps/utils';
@@ -87,4 +96,37 @@ export const generateRandomFelt252 = () => {
 
 export function generateStarkSignature() {
   return [generateRandomFelt252(), generateRandomFelt252()];
+}
+
+export async function findWithdrawalInitiatedEvents(
+  rpcUrl: string,
+  multiTokenBridgeAddress: string,
+  /**
+   * The Ethereum address of the l1 token that is the target of withdrawal, starting with 0x
+   */
+  l1Token: string,
+  /**
+   * The Ethereum address of the recipient of the withdrawal, starting with 0x
+   */
+  l1Recipient: string,
+  fromBlock: number
+) {
+  const providerRPC = new RpcProvider({
+    nodeUrl: rpcUrl
+  }); // for an Infura node on Testnet
+  const lastBlock = await providerRPC.getBlock('latest');
+  const keyFilter = [num.toHex(hash.starknetKeccak('WithdrawInitiated')), l1Token, l1Recipient];
+  const eventsList = await providerRPC.getEvents({
+    address: multiTokenBridgeAddress,
+    // eslint-disable-next-line camelcase
+    from_block: {block_number: fromBlock},
+    // eslint-disable-next-line camelcase
+    to_block: {block_number: lastBlock.block_number},
+    keys: [keyFilter],
+    // Reasonable assumption that a single l2 address won't have more than 200 withdrawal events
+    // eslint-disable-next-line camelcase
+    chunk_size: 200
+  });
+
+  return eventsList;
 }

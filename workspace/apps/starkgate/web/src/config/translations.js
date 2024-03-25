@@ -50,9 +50,9 @@ export const translations = {
       logoutBtnTxt: 'Logout',
       btnTxt: 'Account',
       transferLogContainer: {
-        titleTxt: 'Transfer log',
-        singleOverviewTxt: 'recent transfer',
-        overviewTxt: 'recent transfers',
+        titleTxt: "Pending Transfers (Completed ones aren't shown)",
+        singleOverviewTxt: 'recent',
+        overviewTxt: 'recent',
         errorMsgTxt:
           'We are temporarily unable to show information about your transfers. Please check again in a few minutes.',
         emptyMsgTxt: 'Transfers will appear here...',

@@ -20,7 +20,6 @@ import {
   parseToUint256,
   sendTransactionL2
 } from '@starkware-webapps/web3-utils';
-import {isDai} from '@utils';
 
 export const useBridgeContractAPI = () => {
   const {ethereumAccount, getStarknetSigner} = useWallets();
@@ -31,7 +30,7 @@ export const useBridgeContractAPI = () => {
   const {TELEPORT_FEE_MULTIPLIER} = useConstants();
   const getTeleportOracleAuthContract = useTeleportOracleAuthContract();
   const fetchGasCost = useGasCost();
-  const {SUPPORTED_L2_CHAIN_ID, DAI_TELEPORT_GATEWAY_CONTRACT_ADDRESS, DAI_TELEPORT_TARGET_DOMAIN} =
+  const {DAI_TELEPORT_GATEWAY_CONTRACT_ADDRESS, DAI_TELEPORT_TARGET_DOMAIN} =
     useEnvs();
 
   const {getEthereumProvider} = useEthereumWallet();
@@ -139,40 +138,16 @@ export const useBridgeContractAPI = () => {
   }, []);
 
   const initiateWithdraw = useCallback(
-    async ({recipient, amount, autoWithdrawal}) => {
-      const {bridgeAddress, tokenAddress, decimals, symbol} = selectedToken;
-      const ethTokenAddress = Tokens.L2.ETH.tokenAddress[SUPPORTED_L2_CHAIN_ID];
-      const gasCost = await (autoWithdrawal ? fetchGasCost() : Promise.resolve(0));
+    async ({recipient, amount}) => {
+      const {bridgeAddress, decimals, symbol} = selectedToken;
+      const l1Token = getL1Token(symbol);
       const signer = await getStarknetSigner();
       const transactions = [
-        ...(isDai(symbol)
-          ? [
-              {
-                address: tokenAddress,
-                method: 'increaseAllowance',
-                args: {
-                  spender: bridgeAddress,
-                  amount: parseToUint256(amount, decimals)
-                }
-              }
-            ]
-          : []),
-        ...(autoWithdrawal
-          ? [
-              {
-                address: ethTokenAddress,
-                method: 'transfer',
-                args: {
-                  user: parseToFelt(RELAYER_CONTRACT_ADDRESS),
-                  amount: parseToUint256(parseFromDecimals(gasCost))
-                }
-              }
-            ]
-          : []),
         {
           address: bridgeAddress,
-          method: 'initiate_withdraw',
+          method: 'initiate_token_withdraw',
           args: {
+            l1Token: parseToFelt(l1Token.tokenAddress),
             l1Recipient: parseToFelt(recipient),
             amount: parseToUint256(amount, decimals)
           }
