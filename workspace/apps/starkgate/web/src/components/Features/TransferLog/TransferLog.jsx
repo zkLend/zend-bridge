@@ -70,6 +70,8 @@ export const TransferLog = ({transfer, onCompleteTransferClick, onTxClick}) => {
     );
   };
 
+  const time = isDeposit(type) ? l1TxTimestamp : l2TxTimestamp;
+
   return (
     <>
       <div className={styles.transferLog}>
@@ -83,9 +85,7 @@ export const TransferLog = ({transfer, onCompleteTransferClick, onTxClick}) => {
           </div>
         </div>
         <div className={styles.dataRow}>
-          <div className={styles.data}>{`${getFullTime(
-            isDeposit(type) ? l1TxTimestamp : l2TxTimestamp
-          )}`}</div>
+          <div className={styles.data}>{time !== 0 && `${getFullTime(time)}`}</div>
           {renderTransferStatus()}
         </div>
         <div className={styles.linksRow}>

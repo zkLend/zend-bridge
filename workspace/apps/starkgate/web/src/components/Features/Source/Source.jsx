@@ -30,8 +30,7 @@ export const Source = () => {
       text: withdrawTxt,
       isActive: isWithdrawal(action),
       onClick: () => {
-        // Temporary disabled
-        // onNetworkTabClick(TransferType.WITHDRAWAL);
+        onNetworkTabClick(TransferType.WITHDRAWAL);
       }
     }
   ];

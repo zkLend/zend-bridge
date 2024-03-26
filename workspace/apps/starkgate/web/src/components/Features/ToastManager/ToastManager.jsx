@@ -44,21 +44,21 @@ export const ToastManager = () => {
   const handleToast = (transfer, prevTransfer) => {
     const {l2TxStatus, l1TxHash, l1Address} = transfer;
     const isChanged = prevTransfer && l2TxStatus !== prevTransfer.l2TxStatus;
-    if (isChanged && isConsumed(l2TxStatus)) {
-      return showConsumedTransferToast(transfer);
-    }
-    if (isChanged && isRejected(l2TxStatus)) {
-      return showRejectedTransferToast(transfer);
-    }
+    // if (isChanged && isConsumed(l2TxStatus)) {
+    //   return showConsumedTransferToast(transfer);
+    // }
+    // if (isChanged && isRejected(l2TxStatus)) {
+    //   return showRejectedTransferToast(transfer);
+    // }
     if (
       isPendingWithdrawal(transfer) &&
       l1Address?.toLowerCase() === ethereumAccount?.toLowerCase()
     ) {
       return showCompleteTransferToL1Toast(transfer);
     }
-    if (l1TxHash && isToastRendered(transfer.id, ToastType.COMPLETE_TRANSFER_TO_L1)) {
-      return dismissToast(transfer.id, ToastType.COMPLETE_TRANSFER_TO_L1);
-    }
+    // if (l1TxHash && isToastRendered(transfer.id, ToastType.COMPLETE_TRANSFER_TO_L1)) {
+    //   return dismissToast(transfer.id, ToastType.COMPLETE_TRANSFER_TO_L1);
+    // }
   };
 
   const showConsumedTransferToast = transfer => {
@@ -181,6 +181,7 @@ export const TransferData = ({transfer}) => {
     paddingRight: '0',
     display: 'flex'
   };
+  const time = isDeposit(type) ? l1TxTimestamp : l2TxTimestamp;
 
   return (
     <>
@@ -201,10 +202,7 @@ export const TransferData = ({transfer}) => {
         style={bodyStyle}
       />
       <div style={{display: 'flex', alignItems: 'center'}}>
-        <ToastBody
-          body={getFullTime(isDeposit(type) ? l1TxTimestamp : l2TxTimestamp)}
-          style={bodyStyle}
-        />
+        {time !== 0 && <ToastBody body={getFullTime(time)} style={bodyStyle} />}
         <Bullet />
         <ToastBody body={`${transfer.amount} ${transfer.symbol}`} style={bodyStyle} />
       </div>

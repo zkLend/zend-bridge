@@ -42,18 +42,6 @@ export type TransferLog = {
 
 export const isDeposit = (type: TransferType) => type === TransferType.DEPOSIT;
 export const isWithdrawal = (type: TransferType) => type === TransferType.WITHDRAWAL;
-export const isPendingWithdrawal = ({
-  type,
-  l1TxHash,
-  l2TxStatus,
-  fastWithdrawal,
-  autoWithdrawal,
-  customData
-}: TransferLog) => {
-  return (
-    isWithdrawal(type) &&
-    !autoWithdrawal &&
-    !l1TxHash &&
-    ((!fastWithdrawal && isOnChain(l2TxStatus)) || (fastWithdrawal && customData))
-  );
+export const isPendingWithdrawal = ({type, l1TxHash, l2TxStatus}: TransferLog) => {
+  return isWithdrawal(type) && !l1TxHash && isOnChain(l2TxStatus);
 };

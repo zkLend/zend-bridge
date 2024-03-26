@@ -7,13 +7,15 @@ import {TransferLogContext} from './transfer-log-context';
 
 export const useTransferLog = () => {
   const {isL1} = useTransfer();
-  const {transfersQueryL1, transfersQueryL2} = useContext(TransferLogContext);
+  const {transfersQueryL1, transfersQueryL2, pendingWithdrawalsQuery} =
+    useContext(TransferLogContext);
   const query = isL1 ? transfersQueryL1 : transfersQueryL2;
 
   return useMemo(
     () => ({
       ...query,
-      transfers: flattenPages(query?.data)
+      // Don't show any successful transfers in the past, we don't care
+      transfers: pendingWithdrawalsQuery.data || []
     }),
     [query]
   );

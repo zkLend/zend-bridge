@@ -29,7 +29,7 @@ export const CompleteTransferToL1Toast = ({
       footer={
         <>
           <TransferData transfer={transfer} />
-          <TransferLogLink onClick={onTransferLogLinkClick} />
+          {/* <TransferLogLink onClick={onTransferLogLinkClick} /> */}
         </>
       }
       sideIcon={<EthereumIcon style={{opacity: 0.5}} width={80} />}
