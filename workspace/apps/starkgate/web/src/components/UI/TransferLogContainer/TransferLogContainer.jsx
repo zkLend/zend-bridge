@@ -71,6 +71,11 @@ export const TransferLogContainer = ({
         {titleTxt}
         {children && <CollapseExpand isCollapsed={showChildren} onClick={toggleShowChildren} />}
       </div>
+      <span className={styles.readyWithdrawalOnly}>
+        {
+          "Withdrawals will only appear here once they are ready for completion. If you don't find your withdrawal here, please check back later as it means the transaction is still processing."
+        }
+      </span>
       {isLoading ? <Loading type={LoadingType.LINEAR} /> : renderChildren()}
     </div>
   );

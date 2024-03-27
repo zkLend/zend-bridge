@@ -50,7 +50,7 @@ export const translations = {
       logoutBtnTxt: 'Logout',
       btnTxt: 'Account',
       transferLogContainer: {
-        titleTxt: "Pending Transfers (Completed ones aren't shown)",
+        titleTxt: 'Withdrawals ready for completion',
         singleOverviewTxt: 'recent',
         overviewTxt: 'recent',
         errorMsgTxt:

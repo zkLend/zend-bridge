@@ -76,19 +76,28 @@ const starknetCoreContract = new ethers.Contract(
 
 async function findPendingWithdrawals(withdrawalsWithPayloadHash) {
   const pendingWithdrawals = [];
+  const payloadHashToWithdrawalCount = {};
+
   for (const {withdrawal, payloadHash} of withdrawalsWithPayloadHash) {
-    // BigNumber
-    const pendingWithdrawalCount = await starknetCoreContract.l2ToL1Messages(payloadHash);
-    // We just assume that not a crazy number of withdrawals are pending
-    const reasonablePendingWithdrawalCount = pendingWithdrawalCount.toNumber();
-    if (reasonablePendingWithdrawalCount > 0) {
+    let sameHashPendingWithdrawalCount = 0;
+    if (payloadHash in payloadHashToWithdrawalCount) {
+      sameHashPendingWithdrawalCount = payloadHashToWithdrawalCount[payloadHash];
+    } else {
+      const count = await starknetCoreContract.l2ToL1Messages(payloadHash);
+      // We just assume that not a crazy number of withdrawals are pending
+      sameHashPendingWithdrawalCount = count.toNumber();
+      payloadHashToWithdrawalCount[payloadHash] = sameHashPendingWithdrawalCount;
+    }
+    // Do not show completed withdrawals with the same hash
+    if (sameHashPendingWithdrawalCount > 0) {
       const pendingWithdrawal = {
         withdrawal,
-        payloadHash,
-        pendingWithdrawalCount: reasonablePendingWithdrawalCount
+        payloadHash
       };
 
       pendingWithdrawals.push(pendingWithdrawal);
+
+      payloadHashToWithdrawalCount[payloadHash] = sameHashPendingWithdrawalCount - 1;
     }
   }
 
